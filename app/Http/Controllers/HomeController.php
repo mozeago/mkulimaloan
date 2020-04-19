@@ -23,6 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home')->with('all_roles', DB::select('SELECT * FROM `roles`'));
+        return view('home')->with(['all_roles'=>DB::select('SELECT * FROM `roles`'), 'permissions'=>DB::select('SELECT * FROM `permissions`')]);
     }
 }

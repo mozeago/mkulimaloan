@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
-class RolesController extends Controller
+use Illuminate\Http\Request;
+
+class RolePermissionsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,9 +34,8 @@ class RolesController extends Controller
      */
     public function store(Request $request)
     {
-        Role::create(['name'=>$request->rolename]);
-        $roles=DB::select('SELECT * FROM `roles`');
-        return back()->with(['message'=>'Successfully saved !', 'all_roles'=>$roles]);
+        DB::insert('insert into `role_has_permissions` (permission_id, role_id) values (?, ?)', [$request->permission_id, $request->role_id]);
+        return back()->with('permission_role', 'Successfully saved !');
     }
 
     /**
@@ -82,7 +80,6 @@ class RolesController extends Controller
      */
     public function destroy($id)
     {
-        DB::table('roles')->where('id', $id)->delete();
-        return back()->with('message', 'Successfully Deleted !');
+        //
     }
 }

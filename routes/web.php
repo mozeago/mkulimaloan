@@ -21,4 +21,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::post('roles', 'RolesController@store')->name('addrole');
+Route::resource('roles', 'RolesController');
+Route::resource('permissions', 'PermissionsController');
+Route::resource('rolepermissions', 'RolePermissionsCOntroller');
