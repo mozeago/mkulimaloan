@@ -1,0 +1,9 @@
+{
+    "phpfmt.php_bin": "\"C:\\xampp\\php.exe\"",
+    // Set the default
+    "editor.formatOnSave": false,
+    // Enable per-language
+    "[php]": {
+        "editor.formatOnSave": true
+    }
+}
